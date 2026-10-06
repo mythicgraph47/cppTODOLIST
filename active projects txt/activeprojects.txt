@@ -1,0 +1,12 @@
+#Projects list                     #Status
+-----------------------------------------------------------
+1. Multi Tool in Python           -Not yet completed
+2. GROCERY DISCOUNT CALCULATOR    -Not yet completed
+3. Space Invaders in C++          -Not yet completed
+3. TEXT EDITOR IN C++             -Not yet completed
+4. Game Engine                    -Not yet completed
+5. MacroPad                       -Not yet completed
+6. Student Managing System        -Not yet completed
+7. C++ Simulation & Kinematics (6 to 8 Weeks)
+    Goal: Build an interactive 2D Robotic Arm Kinematics
+    visualizer using C++, OpenGL/SDL, and ImGui.

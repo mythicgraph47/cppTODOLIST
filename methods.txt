@@ -1,0 +1,12 @@
+C++
+
+#include <vector>
+
+push_back(-value-)
+pop_back()
+vec[i] 
+size()
+capacity()
+clear()
+
+
