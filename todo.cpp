@@ -5,7 +5,9 @@
 
 using namespace std;
 
+//Declarations
 int choice = 0;
+vector<string> tasks;
 
 int getRandomNum() {
     random_device rd;
@@ -32,7 +34,6 @@ void menu() {
 int main() {
     cout << " ==== TODO List ==== " << endl;
 
-    vector<string> tasks;
     while (choice != 5) {
         menu();
 
