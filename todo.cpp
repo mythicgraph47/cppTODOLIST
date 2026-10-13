@@ -1,90 +1,109 @@
 #include<iostream>
-#include<vector>
 #include<random>
 #include<string>
+#include<vector>
 
 using namespace std;
 
+//Declarations
 int choice = 0;
+string strChoice;
+vector<string> tasks;
+string pendTasks;
+int removeNum;
+int highlight;
 
-int getRandomNum() {
+int getRandomNumber() {
     random_device rd;
     mt19937 generator(rd());
-    uniform_int_distribution<int> distribution(1, 100); 
+    uniform_int_distribution<int> distribution(1, 100);
 
     int random_Num = distribution(generator);
-    cout << random_Num << endl;
-     
+    return random_Num;
 }
-
-void menu() {
-    cout << "1. View Task" << endl;
+//Display Menu
+void displayMenu() {
+    cout << "1. View Tasks" << endl;
     cout << "2. Add Tasks" << endl;
-    cout << "3. Remove Tasks" << endl;
-    cout << "4. Random" << endl;
-    cout << "5. Exit" << endl;
-    
-    cout << "Enter Choice: ";
-    cin >> choice;
-}
+    cout << "3. Remove Task" << endl;
+    cout << "4. Highlight a task" << endl;
+    cout << "5. Random" << endl;
+    cout << "6. Exit" << endl;
 
+    cout << "Enter choice: ";
+    cin >> choice;
+    cin >> strChoice;
+
+} 
+
+//Main 
 
 int main() {
-    cout << " ==== TODO List ==== " << endl;
-
-    vector<string> tasks;
-    while (choice != 5) {
-        menu();
+    cout << "=== MythicGraph's TODO List ===" << endl;
+    while (choice != 6) {
+        displayMenu();
 
         if (choice == 1) {
             if (tasks.empty()) {
-                cout << "Nothing in the list." << endl;
+                cout << "Your task list is empty. Add Something! " << endl;
+                //return 0;
             } else {
-                for (size_t z = 0; z < tasks.size(); ++z) {
-                    cout << z + 1 << ". " << tasks[z] << endl;
-                    
+                for (size_t x = 0; x < tasks.size(); ++x) {
+                    cout << x + 1 << ". " << tasks[x] << endl;
+                }
             }
-        }
-        
-
         } else if (choice == 2) {
-            string newTask;
             cin.ignore(10000, '\n');
+            cout << "Enter your pending task: " << endl;
+            getline(cin, pendTasks);
 
-            cout << "Which Task do you relish the most?: ";
-            getline(cin, newTask);
-
-            if (newTask.empty()) {
-                cout << "You didnt put anything? Re-enter: ";
+            if (pendTasks.empty()) {
+                cout << "Input cannot be empty" << endl;
             } else {
-            cout << "Task Added" << endl;
-            cout << "------------------------------" << endl;
-            tasks.push_back(newTask);
+                tasks.push_back(pendTasks);
             }
+
 
         } else if (choice == 3) {
-
             if (tasks.empty()) {
-                cout << "Empty List" << endl;
+                cout << "Empty list..." << endl;
             } else {
-            for (size_t z = 0; z < tasks.size(); ++z) {
-                cout << z + 1 << ". " << tasks[z] << endl;
+                for (size_t x = 0; x < tasks.size(); ++x) {
+                cout << x + 1 << ". " << tasks[x] << endl;
             }
+                cout << "Which task do you want to delete? " << endl;
+                cin >> removeNum;
+                tasks.erase(tasks.begin() + (removeNum - 1));
+                cout << "Tasks Terminated" << endl;
+                cout << "--------------------------" << endl;
+
+            }
+        } else if (choice == 4) {
+            for (size_t x = 0; x < tasks.size(); ++x) {
+                cout << x + 1 << ". " << tasks[x] << endl;
+            }
+            cout << "Enter Task Number: " << endl;
+            cin >> highlight;
+
+    if (highlight < 1 || highlight > (int)tasks.size()) {
+    cout << "Invalid task number." << endl;
+
+    } else {
+
+    tasks[highlight - 1] = "* " + tasks[highlight - 1];
+    cout << "Task highlighted!" << endl;
+
+    }
             
-            int removeNum;
-            cout << "----" << endl;
-            cout << "Which task you want to remove?: " << endl; 
-            cin >> removeNum;
-            tasks.erase(tasks.begin() + (removeNum - 1));
-            cout << "Task Terminated" << endl;
-            cout << "---------------------" << endl;
-            }
-       } else if (choice == 4) {
-        cout << "Tasks.gen " << getRandomNum() << endl;
-       }
-        
+        } else if (choice == 5) {
+            cout << "getrandomnum() <<=" << getRandomNumber() << endl << "testFILE-s.c" << endl;
+        } else if (choice == 6 || strChoice == "clear") {
+            cout << "GoodBye!" << endl;
+            break;
+        }
     }
 
 
     return 0;
+    
 }
